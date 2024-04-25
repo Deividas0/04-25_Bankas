@@ -15,17 +15,22 @@ public class Main {
         accounts.add(savings2);
         accounts.add(savings3);
 
-        CheckingAccount checkings1 = new CheckingAccount(511.10,1.20);
-        CheckingAccount checkings2 = new CheckingAccount(735,1.10);
-        CheckingAccount checkings3 = new CheckingAccount(11504.41,1.00);
+        CheckingAccount checkings1 = new CheckingAccount(511.10, 1.20);
+        CheckingAccount checkings2 = new CheckingAccount(735, 1.10);
+        CheckingAccount checkings3 = new CheckingAccount(11504.41, 1.00);
         accounts.add(checkings1);
         accounts.add(checkings2);
         accounts.add(checkings3);
 
-        BigDecimal bd = new BigDecimal(String.valueOf(savings1.calculateInterest()));
-        bd = bd.setScale(2, RoundingMode.UP);
 
-        System.out.println(bd);
+        int i = 1;
+        for (Account a : accounts)
+            if (a instanceof SavingsAccount) {
+                BigDecimal bd = new BigDecimal(String.valueOf(a.calculateInterest()));
+                bd = bd.setScale(2, RoundingMode.UP);
 
+                System.out.println(i + ". " + bd);
+                i++;
+            }
     }
 }
